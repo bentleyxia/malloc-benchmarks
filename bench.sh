@@ -14,7 +14,7 @@ fi
 # Allocators and tests
 # --------------------------------------------------------------------
 
-readonly alloc_all="sys dh ff fg gd hd hm hml iso je lp lt mi mi-sec mng mesh nomesh rp sc scudo sg sm sn sn-sec tbb tc tcg dmi xmi xsmi xdmi"
+readonly alloc_all="sys dh dl ff fg gd hd hm hml iso je lat lp lt mi mi-sec mng mesh nomesh rp sc scudo sg sm sn sn-sec tbb tc tcg dmi xmi xsmi xdmi"
 readonly alloc_secure="dh ff gd hm hml iso mi-sec mng scudo sg sn-sec sg"
 alloc_run=""           # allocators to run (expanded by command line options)
 alloc_installed="sys"  # later expanded to include all installed allocators
@@ -100,6 +100,7 @@ readonly lib_tbb_dir="$(dirname $lib_tbb)"
 
 
 alloc_lib_add "dh"     "$localdevdir/dh/src/libdieharder$extso"
+alloc_lib_add "dl"     "$localdevdir/dlmalloc/lib/libdlmalloc$extso"
 alloc_lib_add "ff"     "$localdevdir/ff/libffmallocnpmt$extso"
 alloc_lib_add "fg"     "$localdevdir/fg/libfreeguard$extso"
 alloc_lib_add "gd"     "$localdevdir/gd/libguarder$extso"
@@ -108,6 +109,7 @@ alloc_lib_add "hm"     "$localdevdir/hm/out/libhardened_malloc$extso"
 alloc_lib_add "hml"    "$localdevdir/hm/out-light/libhardened_malloc-light$extso"
 alloc_lib_add "iso"    "$localdevdir/iso/build/libisoalloc$extso"
 alloc_lib_add "je"     "$localdevdir/jemalloc/lib/libjemalloc$extso"
+alloc_lib_add "lat"     "$localdevdir/latmalloc/lib/liblatmalloc$extso"
 alloc_lib_add "lf"     "$localdevdir/lf/liblite-malloc-shared$extso"
 alloc_lib_add "lp"     "$localdevdir/lp/Source/bmalloc/libpas/build-cmake-default/Release/libpas_lib$extso"
 alloc_lib_add "lt"     "$localdevdir/lt/gnu.make.lib/libltalloc$extso"
@@ -354,6 +356,7 @@ while : ; do
             echo ""
             echo "allocators:"
             echo "  dh                           use dieharder"
+            echo "  dl                           use dlmalloc"
             echo "  dmi                          use debug version of mimalloc"
             echo "  ff                           use ffmalloc"
             echo "  fg                           use freeguard"
@@ -363,6 +366,7 @@ while : ; do
             echo "  hml                          use hardened_malloc light"
             echo "  iso                          use isoalloc"
             echo "  je                           use jemalloc"
+            echo "  lat                          use latmalloc"
             echo "  lp                           use libpas"
             echo "  lf                           use lockfree-malloc"
             echo "  mesh                         use mesh"

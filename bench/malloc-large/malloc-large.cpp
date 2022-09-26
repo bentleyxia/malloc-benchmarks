@@ -7,8 +7,8 @@
 
 int main() {
   static constexpr int kNumBuffers = 20;
-  static constexpr size_t kMinBufferSize = 5 * 1024 * 1024;
-  static constexpr size_t kMaxBufferSize = 25 * 1024 * 1024;
+  static constexpr size_t kMinBufferSize = 50 * 1024 * 1024;
+  static constexpr size_t kMaxBufferSize = 1024 * 1024 * 1024;
   std::unique_ptr<char[]> buffers[kNumBuffers];
 
   //std::random_device rd;
@@ -16,7 +16,7 @@ int main() {
   std::uniform_int_distribution<> size_distribution(kMinBufferSize, kMaxBufferSize);
   std::uniform_int_distribution<> buf_number_distribution(0, kNumBuffers - 1);
 
-  static constexpr int kNumIterations = 2000;
+  static constexpr int kNumIterations = 100;
   const auto start = std::chrono::steady_clock::now();
   for (int i = 0; i < kNumIterations; ++i) {
     int buffer_idx = buf_number_distribution(gen);
